@@ -1,0 +1,31 @@
+# Report artifacts are kept local for now.
+research_report.*
+
+# Large generated model/checkpoint files.
+outputs/*.keras
+outputs/*.h5
+outputs/*.tflite
+
+# Kaggle/runtime logs.
+outputs/*.log
+*.log
+
+# LaTeX auxiliary files.
+*.aux
+*.out
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Python/cache artifacts.
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Local editor settings.
+.vscode/
+
+# Local credentials and environment files.
+.env
+kaggle.json

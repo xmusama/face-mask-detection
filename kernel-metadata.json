@@ -1,0 +1,13 @@
+{
+  "id": "xmusama/face-mask-from-scratch-cv",
+  "title": "Face Mask From Scratch CV",
+  "code_file": "face_mask_from_scratch_cv.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "omkargurav/face-mask-dataset"
+  ]
+}
