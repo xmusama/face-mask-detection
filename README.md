@@ -94,13 +94,10 @@ AUC      : 0.8815
 
 ```text
 .
-├── face_mask_from_scratch_cv.ipynb              # full experiment notebook
-├── face_mask_from_scratch_cv_earlystop.ipynb    # faster early-stop notebook
-├── kernel-metadata.json                         # Kaggle metadata for full run
-├── kernel-metadata-earlystop.json               # Kaggle metadata for early-stop run
-├── run_kaggle.sh                                # full run launcher
-├── run_kaggle_earlystop.sh                      # early-stop launcher
-├── requirements.txt                             # local/Kaggle CLI helper dependencies
+├── face_mask_from_scratch_cv.ipynb   # main experiment notebook
+├── kernel-metadata.json              # Kaggle notebook metadata
+├── run_kaggle.sh                     # push, poll, and download Kaggle run outputs
+├── requirements.txt                  # local/Kaggle CLI helper dependencies
 └── outputs/
     ├── metrics.json                  # full experiment metrics
     ├── scenario_comparison.png
@@ -133,19 +130,6 @@ bash run_kaggle.sh
 ```
 
 The script pushes the notebook, polls the Kaggle kernel status, and downloads outputs into `outputs/` when the run completes.
-
-For the faster early-stop version:
-
-```bash
-bash run_kaggle_earlystop.sh
-```
-
-The early-stop notebook keeps the same from-scratch rule but focuses on the best full-run architecture (`T2`) and uses stricter stopping:
-
-- `EarlyStopping(patience=3, min_delta=1e-3, start_from_epoch=8)`
-- `ReduceLROnPlateau(patience=2)`
-- target-stop callback when `val_loss <= 0.030` and `val_accuracy >= 0.990`
-- default architecture: filters `[48, 96, 160, 256]`, SE blocks enabled, AdamW, learning rate `7e-4`, augmentation enabled
 
 ## Notes
 
