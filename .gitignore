@@ -8,6 +8,10 @@ outputs/*.tflite
 
 # Kaggle/runtime logs.
 outputs/*.log
+outputs_earlystop/*.keras
+outputs_earlystop/*.h5
+outputs_earlystop/*.tflite
+outputs_earlystop/*.log
 *.log
 
 # LaTeX auxiliary files.
