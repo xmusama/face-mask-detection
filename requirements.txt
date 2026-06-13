@@ -1,8 +1,8 @@
-tensorflow
-numpy
+streamlit
+tensorflow==2.20.0
+numpy<2.3
 matplotlib
 scikit-learn
 joblib
 opencv-python-headless
 kaggle
-streamlit
