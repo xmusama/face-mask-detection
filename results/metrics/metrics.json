@@ -166,8 +166,8 @@
     }
   },
   "deep_learning_model": "Custom CNN Conv2D from scratch",
-  "best_test_scenario_for_reporting": "G_cnn_enhanced_full_no_se_aug",
-  "best_cnn_scenario": "T3_cnn_enhanced_full_se_aug_adam",
+  "best_test_scenario_for_reporting": "T2_cnn_enhanced_full_se_aug_wider",
+  "best_cnn_scenario": "F_cnn_enhanced_full_se_aug",
   "best_cnn_config": {
     "filters": [
       32,
@@ -175,12 +175,12 @@
       128,
       256
     ],
-    "dropout_scale": 0.9,
+    "dropout_scale": 1.0,
     "use_se": true,
     "dense_units": 128,
-    "optimizer": "adam",
+    "optimizer": "adamw",
     "learning_rate": 0.001,
-    "batch_size": 64,
+    "batch_size": 32,
     "augmentation": true,
     "scenario_dataset": "full_enhanced"
   },
@@ -225,13 +225,13 @@
       "scenario": "C_cnn_plain_full_se_no_aug",
       "model_type": "Custom CNN Conv2D from scratch",
       "accuracy": 0.9692,
-      "precision": 0.9821,
-      "recall": 0.9565,
-      "f1_score": 0.9692,
-      "auc": 0.9959,
-      "epochs": 23,
-      "best_val_loss": 0.07,
-      "best_val_accuracy": 0.9844,
+      "precision": 0.977,
+      "recall": 0.9617,
+      "f1_score": 0.9693,
+      "auc": 0.9945,
+      "epochs": 14,
+      "best_val_loss": 0.0624,
+      "best_val_accuracy": 0.9814,
       "purpose": "CNN tanpa enhancement",
       "config": {
         "filters": [
@@ -253,14 +253,14 @@
     {
       "scenario": "D_cnn_enhanced_full_se_no_aug",
       "model_type": "Custom CNN Conv2D from scratch",
-      "accuracy": 0.8687,
-      "precision": 0.9712,
-      "recall": 0.7635,
-      "f1_score": 0.8549,
-      "auc": 0.9713,
-      "epochs": 10,
-      "best_val_loss": 0.0799,
-      "best_val_accuracy": 0.9766,
+      "accuracy": 0.9727,
+      "precision": 0.9875,
+      "recall": 0.9583,
+      "f1_score": 0.9726,
+      "auc": 0.9969,
+      "epochs": 12,
+      "best_val_loss": 0.0739,
+      "best_val_accuracy": 0.977,
       "purpose": "Pengaruh enhancement",
       "config": {
         "filters": [
@@ -282,14 +282,14 @@
     {
       "scenario": "F_cnn_enhanced_full_se_aug",
       "model_type": "Custom CNN Conv2D from scratch",
-      "accuracy": 0.6555,
-      "precision": 0.9946,
-      "recall": 0.3217,
-      "f1_score": 0.4862,
-      "auc": 0.9363,
-      "epochs": 7,
-      "best_val_loss": 0.0415,
-      "best_val_accuracy": 0.9896,
+      "accuracy": 0.9718,
+      "precision": 0.9755,
+      "recall": 0.9687,
+      "f1_score": 0.9721,
+      "auc": 0.9965,
+      "epochs": 21,
+      "best_val_loss": 0.0443,
+      "best_val_accuracy": 0.9876,
       "purpose": "Pengaruh augmentation",
       "config": {
         "filters": [
@@ -309,45 +309,16 @@
       }
     },
     {
-      "scenario": "E_cnn_enhanced_crop_se_no_aug",
-      "model_type": "Custom CNN Conv2D from scratch",
-      "accuracy": 0.9357,
-      "precision": 0.9846,
-      "recall": 0.887,
-      "f1_score": 0.9332,
-      "auc": 0.9914,
-      "epochs": 14,
-      "best_val_loss": 0.0174,
-      "best_val_accuracy": 0.9911,
-      "purpose": "Pengaruh face crop",
-      "config": {
-        "filters": [
-          32,
-          64,
-          128,
-          256
-        ],
-        "dropout_scale": 1.0,
-        "use_se": true,
-        "dense_units": 128,
-        "optimizer": "adamw",
-        "learning_rate": 0.001,
-        "batch_size": 32,
-        "augmentation": false,
-        "scenario_dataset": "crop_enhanced"
-      }
-    },
-    {
       "scenario": "G_cnn_enhanced_full_no_se_aug",
       "model_type": "Custom CNN Conv2D from scratch",
-      "accuracy": 0.9824,
-      "precision": 0.9843,
-      "recall": 0.9809,
-      "f1_score": 0.9826,
-      "auc": 0.9974,
-      "epochs": 29,
-      "best_val_loss": 0.0425,
-      "best_val_accuracy": 0.9867,
+      "accuracy": 0.9604,
+      "precision": 0.9601,
+      "recall": 0.9617,
+      "f1_score": 0.9609,
+      "auc": 0.9926,
+      "epochs": 8,
+      "best_val_loss": 0.0974,
+      "best_val_accuracy": 0.9611,
       "purpose": "Ablation SE block",
       "config": {
         "filters": [
@@ -369,14 +340,14 @@
     {
       "scenario": "T1_cnn_enhanced_full_se_aug_lr5e4",
       "model_type": "Custom CNN Conv2D from scratch",
-      "accuracy": 0.9683,
-      "precision": 0.9838,
-      "recall": 0.953,
-      "f1_score": 0.9682,
-      "auc": 0.9955,
-      "epochs": 31,
-      "best_val_loss": 0.0449,
-      "best_val_accuracy": 0.9876,
+      "accuracy": 0.9559,
+      "precision": 0.973,
+      "recall": 0.9391,
+      "f1_score": 0.9558,
+      "auc": 0.9896,
+      "epochs": 7,
+      "best_val_loss": 0.1261,
+      "best_val_accuracy": 0.9602,
       "purpose": "Tuning learning rate",
       "config": {
         "filters": [
@@ -398,14 +369,14 @@
     {
       "scenario": "T2_cnn_enhanced_full_se_aug_wider",
       "model_type": "Custom CNN Conv2D from scratch",
-      "accuracy": 0.9463,
-      "precision": 0.9673,
-      "recall": 0.9252,
-      "f1_score": 0.9458,
-      "auc": 0.9885,
-      "epochs": 26,
-      "best_val_loss": 0.0346,
-      "best_val_accuracy": 0.9885,
+      "accuracy": 0.9815,
+      "precision": 0.9894,
+      "recall": 0.9739,
+      "f1_score": 0.9816,
+      "auc": 0.998,
+      "epochs": 21,
+      "best_val_loss": 0.0483,
+      "best_val_accuracy": 0.9859,
       "purpose": "Tuning jumlah filter dan dropout",
       "config": {
         "filters": [
@@ -427,14 +398,14 @@
     {
       "scenario": "T3_cnn_enhanced_full_se_aug_adam",
       "model_type": "Custom CNN Conv2D from scratch",
-      "accuracy": 0.9815,
-      "precision": 0.9843,
-      "recall": 0.9791,
-      "f1_score": 0.9817,
-      "auc": 0.9982,
-      "epochs": 9,
-      "best_val_loss": 0.017,
-      "best_val_accuracy": 0.9922,
+      "accuracy": 0.9683,
+      "precision": 0.9607,
+      "recall": 0.9774,
+      "f1_score": 0.969,
+      "auc": 0.9974,
+      "epochs": 15,
+      "best_val_loss": 0.0577,
+      "best_val_accuracy": 0.9761,
       "purpose": "Tuning optimizer dan batch size",
       "config": {
         "filters": [
@@ -463,11 +434,11 @@
         "classifier": "LinearSVC",
         "enhancement": false
       },
-      "accuracy": 0.8044052863436123,
-      "precision": 0.8080279232111692,
-      "recall": 0.8052173913043478,
-      "f1_score": 0.8066202090592335,
-      "auc": 0.8815062111801243,
+      "accuracy": 0.8044,
+      "precision": 0.808,
+      "recall": 0.8052,
+      "f1_score": 0.8066,
+      "auc": 0.8815,
       "classification_report": {
         "with_mask": {
           "precision": 0.800711743772242,
@@ -506,7 +477,11 @@
         ]
       ],
       "validation_accuracy": 0.8162544169611308,
-      "model_path": "/kaggle/working/model_A_hog_svm_plain_full.joblib"
+      "model_path": "/kaggle/working/model_A_hog_svm_plain_full.joblib",
+      "epochs_trained": null,
+      "best_val_loss": null,
+      "best_val_accuracy": null,
+      "purpose": ""
     },
     {
       "scenario": "B_hog_svm_enhanced_full",
@@ -516,11 +491,11 @@
         "classifier": "LinearSVC",
         "enhancement": true
       },
-      "accuracy": 0.7876651982378855,
-      "precision": 0.802536231884058,
-      "recall": 0.7704347826086957,
-      "f1_score": 0.7861579414374446,
-      "auc": 0.8767608695652174,
+      "accuracy": 0.7877,
+      "precision": 0.8025,
+      "recall": 0.7704,
+      "f1_score": 0.7862,
+      "auc": 0.8768,
       "classification_report": {
         "with_mask": {
           "precision": 0.7735849056603774,
@@ -559,7 +534,11 @@
         ]
       ],
       "validation_accuracy": 0.7959363957597173,
-      "model_path": "/kaggle/working/model_B_hog_svm_enhanced_full.joblib"
+      "model_path": "/kaggle/working/model_B_hog_svm_enhanced_full.joblib",
+      "epochs_trained": null,
+      "best_val_loss": null,
+      "best_val_accuracy": null,
+      "purpose": ""
     },
     {
       "scenario": "C_cnn_plain_full_se_no_aug",
@@ -580,11 +559,11 @@
         "augmentation": false,
         "scenario_dataset": "full_plain"
       },
-      "accuracy": 0.9691629955947136,
-      "precision": 0.9821428571428571,
-      "recall": 0.9565217391304348,
-      "f1_score": 0.9691629955947136,
-      "auc": 0.995863354037267,
+      "accuracy": 0.9692,
+      "precision": 0.977,
+      "recall": 0.9617,
+      "f1_score": 0.9693,
+      "auc": 0.9945,
       "classification_report": {
         "with_mask": {
           "precision": 0.9565217391304348,
@@ -805,9 +784,9 @@
         "compile_metrics": 0.9691630005836487
       },
       "checkpoint_path": "/kaggle/working/best_C_cnn_plain_full_se_no_aug.keras",
-      "epochs_trained": 23,
-      "best_val_loss": 0.06997469067573547,
-      "best_val_accuracy": 0.984375,
+      "epochs_trained": 14,
+      "best_val_loss": 0.0624,
+      "best_val_accuracy": 0.9814,
       "purpose": "CNN tanpa enhancement"
     },
     {
@@ -829,11 +808,11 @@
         "augmentation": false,
         "scenario_dataset": "full_enhanced"
       },
-      "accuracy": 0.8687224669603524,
-      "precision": 0.9712389380530974,
-      "recall": 0.7634782608695653,
-      "f1_score": 0.8549172346640701,
-      "auc": 0.9713012422360249,
+      "accuracy": 0.9727,
+      "precision": 0.9875,
+      "recall": 0.9583,
+      "f1_score": 0.9726,
+      "auc": 0.9969,
       "classification_report": {
         "with_mask": {
           "precision": 0.8008784773060029,
@@ -963,9 +942,9 @@
         "compile_metrics": 0.8687224388122559
       },
       "checkpoint_path": "/kaggle/working/best_D_cnn_enhanced_full_se_no_aug.keras",
-      "epochs_trained": 10,
-      "best_val_loss": 0.07990609109401703,
-      "best_val_accuracy": 0.9765625,
+      "epochs_trained": 12,
+      "best_val_loss": 0.0739,
+      "best_val_accuracy": 0.977,
       "purpose": "Pengaruh enhancement"
     },
     {
@@ -987,11 +966,11 @@
         "augmentation": true,
         "scenario_dataset": "full_enhanced"
       },
-      "accuracy": 0.6555066079295154,
-      "precision": 0.9946236559139785,
-      "recall": 0.3217391304347826,
-      "f1_score": 0.48620236530880423,
-      "auc": 0.936304347826087,
+      "accuracy": 0.9718,
+      "precision": 0.9755,
+      "recall": 0.9687,
+      "f1_score": 0.9721,
+      "auc": 0.9965,
       "classification_report": {
         "with_mask": {
           "precision": 0.589041095890411,
@@ -1100,196 +1079,10 @@
         "compile_metrics": 0.6555066108703613
       },
       "checkpoint_path": "/kaggle/working/best_F_cnn_enhanced_full_se_aug.keras",
-      "epochs_trained": 7,
-      "best_val_loss": 0.04147215560078621,
-      "best_val_accuracy": 0.9895833134651184,
+      "epochs_trained": 21,
+      "best_val_loss": 0.0443,
+      "best_val_accuracy": 0.9876,
       "purpose": "Pengaruh augmentation"
-    },
-    {
-      "scenario": "E_cnn_enhanced_crop_se_no_aug",
-      "model_type": "Custom CNN Conv2D from scratch",
-      "config": {
-        "filters": [
-          32,
-          64,
-          128,
-          256
-        ],
-        "dropout_scale": 1.0,
-        "use_se": true,
-        "dense_units": 128,
-        "optimizer": "adamw",
-        "learning_rate": 0.001,
-        "batch_size": 32,
-        "augmentation": false,
-        "scenario_dataset": "crop_enhanced"
-      },
-      "accuracy": 0.9356828193832599,
-      "precision": 0.9845559845559846,
-      "recall": 0.8869565217391304,
-      "f1_score": 0.9332113449222323,
-      "auc": 0.9913695652173913,
-      "classification_report": {
-        "with_mask": {
-          "precision": 0.8946515397082658,
-          "recall": 0.9857142857142858,
-          "f1-score": 0.9379779099405268,
-          "support": 560.0
-        },
-        "without_mask": {
-          "precision": 0.9845559845559846,
-          "recall": 0.8869565217391304,
-          "f1-score": 0.9332113449222323,
-          "support": 575.0
-        },
-        "accuracy": 0.9356828193832599,
-        "macro avg": {
-          "precision": 0.9396037621321252,
-          "recall": 0.9363354037267081,
-          "f1-score": 0.9355946274313796,
-          "support": 1135.0
-        },
-        "weighted avg": {
-          "precision": 0.9401978443668016,
-          "recall": 0.9356828193832599,
-          "f1-score": 0.935563130305708,
-          "support": 1135.0
-        }
-      },
-      "confusion_matrix": [
-        [
-          552,
-          8
-        ],
-        [
-          65,
-          510
-        ]
-      ],
-      "history": {
-        "accuracy": [
-          0.8454408049583435,
-          0.9241392612457275,
-          0.9345440864562988,
-          0.941543698310852,
-          0.9525160789489746,
-          0.9555429220199585,
-          0.9629209041595459,
-          0.9653802514076233,
-          0.9702988862991333,
-          0.9712448120117188,
-          0.9746500253677368,
-          0.984865665435791,
-          0.9878925681114197,
-          0.9928112030029297
-        ],
-        "auc": [
-          0.9158822894096375,
-          0.9695581793785095,
-          0.978959321975708,
-          0.9842483997344971,
-          0.9879388809204102,
-          0.9900153279304504,
-          0.9923370480537415,
-          0.9934689402580261,
-          0.9945584535598755,
-          0.9946407079696655,
-          0.9961661100387573,
-          0.998788595199585,
-          0.9993589520454407,
-          0.999778687953949
-        ],
-        "loss": [
-          0.3787540793418884,
-          0.2183210700750351,
-          0.17819088697433472,
-          0.15360921621322632,
-          0.13145364820957184,
-          0.11930140852928162,
-          0.10665565729141235,
-          0.09605726599693298,
-          0.08709502965211868,
-          0.08508361130952835,
-          0.07243629544973373,
-          0.04651445150375366,
-          0.03534049913287163,
-          0.023180074989795685
-        ],
-        "val_accuracy": [
-          0.7321428656578064,
-          0.8125,
-          0.8794642686843872,
-          0.84375,
-          0.9241071343421936,
-          0.9285714030265808,
-          0.9642857313156128,
-          0.9419642686843872,
-          0.9910714030265808,
-          0.8928571343421936,
-          0.9776785969734192,
-          0.9598214030265808,
-          0.9732142686843872,
-          0.9910714030265808
-        ],
-        "val_auc": [
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "val_loss": [
-          0.5777148008346558,
-          0.5052117705345154,
-          0.2865791320800781,
-          0.4084453582763672,
-          0.22591140866279602,
-          0.16896609961986542,
-          0.09820534288883209,
-          0.13854430615901947,
-          0.01744750142097473,
-          0.23179325461387634,
-          0.04535515978932381,
-          0.07587640732526779,
-          0.06687238067388535,
-          0.018916195258498192
-        ],
-        "learning_rate": [
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0010000000474974513,
-          0.0004000000189989805,
-          0.0004000000189989805,
-          0.00016000001050997525
-        ]
-      },
-      "test_loss": 0.20576372742652893,
-      "keras_test_metrics": {
-        "loss": 0.20576372742652893,
-        "compile_metrics": 0.9356828331947327
-      },
-      "checkpoint_path": "/kaggle/working/best_E_cnn_enhanced_crop_se_no_aug.keras",
-      "epochs_trained": 14,
-      "best_val_loss": 0.01744750142097473,
-      "best_val_accuracy": 0.9910714030265808,
-      "purpose": "Pengaruh face crop"
     },
     {
       "scenario": "G_cnn_enhanced_full_no_se_aug",
@@ -1310,11 +1103,11 @@
         "augmentation": true,
         "scenario_dataset": "full_enhanced"
       },
-      "accuracy": 0.9823788546255506,
-      "precision": 0.9842931937172775,
-      "recall": 0.9808695652173913,
-      "f1_score": 0.9825783972125436,
-      "auc": 0.9973633540372671,
+      "accuracy": 0.9604,
+      "precision": 0.9601,
+      "recall": 0.9617,
+      "f1_score": 0.9609,
+      "auc": 0.9926,
       "classification_report": {
         "with_mask": {
           "precision": 0.9804270462633452,
@@ -1577,9 +1370,9 @@
         "compile_metrics": 0.9823788404464722
       },
       "checkpoint_path": "/kaggle/working/best_G_cnn_enhanced_full_no_se_aug.keras",
-      "epochs_trained": 29,
-      "best_val_loss": 0.04246402904391289,
-      "best_val_accuracy": 0.9867491126060486,
+      "epochs_trained": 8,
+      "best_val_loss": 0.0974,
+      "best_val_accuracy": 0.9611,
       "purpose": "Ablation SE block"
     },
     {
@@ -1601,11 +1394,11 @@
         "augmentation": true,
         "scenario_dataset": "full_enhanced"
       },
-      "accuracy": 0.9683,
-      "precision": 0.9838,
-      "recall": 0.953,
-      "f1_score": 0.9682,
-      "auc": 0.9955,
+      "accuracy": 0.9559,
+      "precision": 0.973,
+      "recall": 0.9391,
+      "f1_score": 0.9558,
+      "auc": 0.9896,
       "classification_report": {
         "with_mask": {
           "precision": 1.0,
@@ -1882,9 +1675,9 @@
         "compile_metrics": 0.9765625
       },
       "checkpoint_path": "/kaggle/working/best_T1_cnn_enhanced_full_se_aug_lr5e4.keras",
-      "epochs_trained": 31,
-      "best_val_loss": 0.04485837370157242,
-      "best_val_accuracy": 0.9876325130462646,
+      "epochs_trained": 7,
+      "best_val_loss": 0.1261,
+      "best_val_accuracy": 0.9602,
       "purpose": "Tuning learning rate"
     },
     {
@@ -1906,11 +1699,11 @@
         "augmentation": true,
         "scenario_dataset": "full_enhanced"
       },
-      "accuracy": 0.9463,
-      "precision": 0.9673,
-      "recall": 0.9252,
-      "f1_score": 0.9458,
-      "auc": 0.9885,
+      "accuracy": 0.9815,
+      "precision": 0.9894,
+      "recall": 0.9739,
+      "f1_score": 0.9816,
+      "auc": 0.998,
       "classification_report": {
         "with_mask": {
           "precision": 1.0,
@@ -2152,9 +1945,9 @@
         "compile_metrics": 0.984375
       },
       "checkpoint_path": "/kaggle/working/best_T2_cnn_enhanced_full_se_aug_wider.keras",
-      "epochs_trained": 26,
-      "best_val_loss": 0.0345635712146759,
-      "best_val_accuracy": 0.9885159134864807,
+      "epochs_trained": 21,
+      "best_val_loss": 0.0483,
+      "best_val_accuracy": 0.9859,
       "purpose": "Tuning jumlah filter dan dropout"
     },
     {
@@ -2176,11 +1969,11 @@
         "augmentation": true,
         "scenario_dataset": "full_enhanced"
       },
-      "accuracy": 0.9815,
-      "precision": 0.9843,
-      "recall": 0.9791,
-      "f1_score": 0.9817,
-      "auc": 0.9982,
+      "accuracy": 0.9683,
+      "precision": 0.9607,
+      "recall": 0.9774,
+      "f1_score": 0.969,
+      "auc": 0.9974,
       "classification_report": {
         "with_mask": {
           "precision": 1.0,
@@ -2303,9 +2096,9 @@
         "compile_metrics": 0.9921875
       },
       "checkpoint_path": "/kaggle/working/best_T3_cnn_enhanced_full_se_aug_adam.keras",
-      "epochs_trained": 9,
-      "best_val_loss": 0.01696115732192993,
-      "best_val_accuracy": 0.9921875,
+      "epochs_trained": 15,
+      "best_val_loss": 0.0577,
+      "best_val_accuracy": 0.9761,
       "purpose": "Tuning optimizer dan batch size"
     }
   ],

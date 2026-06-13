@@ -263,14 +263,26 @@ def render_single_face_prediction(image_rgb, selected_model: dict, faces=None) -
         st.progress(prediction["score_without_mask"], text=f"Probability without_mask: {prediction['score_without_mask']:.2%}")
 
 
-def render_artifacts() -> None:
+def artifact_scenario_name(path_name: str) -> str | None:
+    for prefix in ["confusion_matrix_", "roc_curve_", "training_history_", "best_", "model_"]:
+        if path_name.startswith(prefix):
+            stem = path_name.removeprefix(prefix).rsplit(".", 1)[0]
+            return stem
+    return None
+
+
+def render_artifacts(metrics: dict) -> None:
     st.subheader("Generated Artifacts")
+    allowed_scenarios = {row.get("scenario") for row in metrics.get("summary_rows", [])}
     rows = []
     for folder in [FIGURES_DIR, MODELS_DIR, METRICS_DIR]:
         if not folder.exists():
             continue
         for path in sorted(folder.glob("*")):
             if path.is_file() and path.name != ".gitkeep":
+                scenario = artifact_scenario_name(path.name)
+                if scenario and allowed_scenarios and scenario not in allowed_scenarios:
+                    continue
                 rows.append(
                     {
                         "folder": path.parent.name,

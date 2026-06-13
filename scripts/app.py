@@ -74,4 +74,4 @@ with predict_tab:
     render_predict(metrics, model_options)
 
 with artifacts_tab:
-    render_artifacts()
+    render_artifacts(metrics)
