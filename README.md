@@ -19,13 +19,13 @@ This project was built for an academic computer vision practicum. It intentional
 
 ## Compute
 
-The full experiment was run on Kaggle Notebook GPU runtime using a Tesla T4 x2 environment.
+The current execution target is Google Colab GPU runtime. A Colab-ready runner is provided at `source/00_colab_run_all.ipynb`.
 
-- Accelerator setting: `NvidiaTeslaT4`
-- Training command: `bash run_kaggle.sh`
-- Full run duration: approximately **1 hour 31 minutes**
-- Run window: `2026-05-26 15:49 UTC` to `2026-05-26 17:20 UTC`
-- Max epochs per CNN scenario: `50`
+- Runtime: Google Colab GPU
+- Dataset source: Kaggle Face Mask Dataset (`omkargurav/face-mask-dataset`)
+- Runner: `source/00_colab_run_all.ipynb`
+- Output folder inside Colab: `/content/results`
+- Max epochs per CNN scenario in the Colab runner: `25`
 - Early stopping: enabled
 
 ## Results
@@ -93,21 +93,35 @@ AUC      : 0.8815
 ## Repository Structure
 
 ```text
-.
-├── face_mask_from_scratch_cv.ipynb   # main experiment notebook
-├── kernel-metadata.json              # Kaggle notebook metadata
-├── run_kaggle.sh                     # push, poll, and download Kaggle run outputs
-├── requirements.txt                  # local/Kaggle CLI helper dependencies
-└── outputs/
-    ├── metrics.json                  # full experiment metrics
-    ├── scenario_comparison.png
-    ├── preprocessing_examples.png
-    ├── confusion_matrix_*.png
-    ├── roc_curve_*.png
-    └── training_history_*.png
+source/         # Split experiment notebooks and Colab runner
+scripts/        # Reserved for the Streamlit app
+automation/     # Kaggle run and polling helpers
+results/
+  figures/      # Scenario comparison, preprocessing examples, confusion matrices, ROC curves, training curves
+  metrics/      # Full experiment metrics JSON
+  models/       # Generated model checkpoints, kept out of git
+requirements.txt
+kernel-metadata.json
+README.md
 ```
 
+Notebook order:
+
+```text
+source/00_colab_run_all.ipynb  # Recommended for Colab execution
+source/01_eda.ipynb
+source/02_preprocessing.ipynb
+source/03_classical.ipynb
+source/04_cnn.ipynb
+source/05_evaluation.ipynb
+```
+
+The first notebook keeps EDA separated by method: class distribution, raw image samples, image resolution, brightness/contrast, noise/blur, edge and HOG visualization, pose/background variation, and Haar Cascade face detection coverage. The 70/15/15 data split is placed at the final cell of `01_eda.ipynb` after the original-image EDA is complete.
+
+For modular execution, run the notebooks in order in the same kernel/session. The modeling notebooks only train and store models; all test-set metrics, ROC curves, confusion matrices, scenario comparison, and final export are handled in `05_evaluation.ipynb`.
+
 Model checkpoints (`*.keras`), Kaggle logs, and report files are intentionally excluded from git to keep the repository lightweight.
+The Streamlit-ready final CNN checkpoint is included as `results/models/face_mask_custom_cnn_from_scratch_best.keras` so prediction can run after remote deployment.
 
 ## Reproduction
 
@@ -117,19 +131,49 @@ Install local helper dependencies:
 pip install -r requirements.txt
 ```
 
-Make sure Kaggle credentials are available:
+Recommended Colab flow:
+
+```text
+1. Open source/00_colab_run_all.ipynb in Google Colab.
+2. Select Runtime -> Change runtime type -> GPU.
+3. Run all cells.
+4. Upload kaggle.json when prompted.
+5. Download the generated /content/face_mask_results.zip.
+```
+
+For local or Kaggle-style execution, make sure Kaggle credentials are available:
 
 ```bash
 ~/.kaggle/kaggle.json
 ```
 
-Run the full experiment on Kaggle:
+Run the modular notebooks sequentially in one session:
 
-```bash
-bash run_kaggle.sh
+```text
+01_eda -> 02_preprocessing -> 03_classical -> 04_cnn -> 05_evaluation
 ```
 
-The script pushes the notebook, polls the Kaggle kernel status, and downloads outputs into `outputs/` when the run completes.
+Generated figures are organized under `results/figures/`, metrics under `results/metrics/`, and model files under `results/models/`.
+
+## Streamlit App
+
+Run the local dashboard:
+
+```bash
+streamlit run scripts/app.py
+```
+
+The app reads metrics and figures from `results/`. Image prediction uses `results/models/face_mask_custom_cnn_from_scratch_best.keras` for the CNN model and the `.joblib` files for HOG-SVM.
+
+Remote deployment settings:
+
+```text
+Platform : Streamlit Community Cloud or compatible Streamlit host
+Branch   : deployment branch
+Main file: scripts/app.py
+Python   : runtime.txt
+Packages : requirements.txt
+```
 
 ## Notes
 

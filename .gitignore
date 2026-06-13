@@ -2,12 +2,14 @@
 research_report.*
 
 # Large generated model/checkpoint files.
-outputs/*.keras
-outputs/*.h5
-outputs/*.tflite
+results/models/*.keras
+!results/models/face_mask_custom_cnn_from_scratch_best.keras
+results/models/*.h5
+results/models/*.tflite
 
 # Kaggle/runtime logs.
-outputs/*.log
+results/*.log
+results/logs/
 *.log
 
 # LaTeX auxiliary files.

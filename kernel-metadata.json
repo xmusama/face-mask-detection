@@ -1,7 +1,7 @@
 {
-  "id": "xmusama/face-mask-from-scratch-cv",
+  "id": "tristianyosa/face-mask-from-scratch-cv",
   "title": "Face Mask From Scratch CV",
-  "code_file": "face_mask_from_scratch_cv.ipynb",
+  "code_file": "source/00_kaggle_gpu_run_all.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": true,

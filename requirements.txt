@@ -2,5 +2,7 @@ tensorflow
 numpy
 matplotlib
 scikit-learn
+joblib
 opencv-python-headless
 kaggle
+streamlit

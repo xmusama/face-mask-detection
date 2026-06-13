@@ -1,0 +1,12 @@
+.git/
+.venv/
+tmp/
+results/
+outputs/
+__pycache__/
+*.log
+*.zip
+*.keras
+*.h5
+*.tflite
+*.pyc
