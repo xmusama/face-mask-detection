@@ -156,7 +156,7 @@ def render_figures() -> None:
             "eda_class_split_distribution.png",
         ],
         "Preprocessing": ["preprocessing_examples.png"],
-        "Evaluation": ["scenario_comparison.png", "sample_predictions_with_bbox_by_model.png"],
+        "Evaluation": ["scenario_comparison.png", "sample_predictions_by_model.png"],
     }
     group = st.segmented_control("Figure group", list(figure_groups), default="EDA")
     available = [name for name in figure_groups[group] if figure_path(name).exists()]
@@ -205,8 +205,6 @@ def render_predict(metrics: dict, model_options: list[dict]) -> None:
             render_single_face_prediction(image_rgb, selected_model, faces=faces)
             return
 
-        st.info("Tidak ada wajah yang terdeteksi otomatis. Prediksi dilakukan pada keseluruhan gambar.")
-
         if selected_model["kind"] == "cnn":
             prediction = predict_with_cnn(selected_model["path"], image_rgb, selected_model["scenario"])
         else:
@@ -248,11 +246,6 @@ def render_single_face_prediction(image_rgb, selected_model: dict, faces=None) -
     cv2.rectangle(annotated, (x, y), (x + w, y + h), color, 3)
     label = f"{prediction['label']} {prediction['confidence']:.0%}"
     cv2.putText(annotated, label, (x, max(20, y - 8)), cv2.FONT_HERSHEY_SIMPLEX, 0.65, color, 2, cv2.LINE_AA)
-
-    if len(faces) > 1:
-        st.info(f"{len(faces)} wajah terdeteksi, prediksi hanya memakai wajah terbesar.")
-    else:
-        st.success("1 wajah terdeteksi.")
 
     col1, col2, col3 = st.columns([1, 1, 1])
     col1.image(annotated, caption="Detected Face", width="stretch")
