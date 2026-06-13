@@ -1,5 +1,5 @@
 streamlit
-tensorflow==2.20.0
+tensorflow==2.20.0; python_version < "3.13"
 numpy<2.3
 matplotlib
 scikit-learn
