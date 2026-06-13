@@ -12,6 +12,10 @@ def tensorflow_available() -> bool:
     return importlib.util.find_spec("tensorflow") is not None
 
 
+def classical_available() -> bool:
+    return importlib.util.find_spec("joblib") is not None and importlib.util.find_spec("sklearn") is not None
+
+
 def scenario_from_model_name(path: Path, best_scenario: str) -> str:
     if path.name == "face_mask_custom_cnn_from_scratch_best.keras":
         return best_scenario
@@ -25,6 +29,7 @@ def scenario_from_model_name(path: Path, best_scenario: str) -> str:
 def list_model_options(metrics: dict) -> list[dict]:
     best_scenario = metrics.get("best_cnn_scenario", "")
     has_tensorflow = tensorflow_available()
+    has_classical_runtime = classical_available()
     options = []
 
     for path in sorted(MODELS_DIR.glob("*.keras")):
@@ -46,13 +51,16 @@ def list_model_options(metrics: dict) -> list[dict]:
 
     for path in sorted(MODELS_DIR.glob("*.joblib")):
         scenario = scenario_from_model_name(path, best_scenario)
+        label = f"{scenario} (.joblib)"
+        if not has_classical_runtime:
+            label = f"{label} - scikit-learn belum tersedia"
         options.append(
             {
-                "label": f"{scenario} (.joblib)",
+                "label": label,
                 "path": path,
                 "kind": "classical",
                 "scenario": scenario,
-                "available": True,
+                "available": has_classical_runtime,
             }
         )
 
