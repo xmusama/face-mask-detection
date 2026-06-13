@@ -28,18 +28,15 @@ def scenario_from_model_name(path: Path, best_scenario: str) -> str:
 
 def list_model_options(metrics: dict) -> list[dict]:
     best_scenario = metrics.get("best_cnn_scenario", "")
-    allowed_scenarios = {row.get("scenario") for row in metrics.get("summary_rows", [])}
     has_tensorflow = tensorflow_available()
     has_classical_runtime = classical_available()
     options = []
 
     for path in sorted(MODELS_DIR.glob("*.keras")):
         scenario = scenario_from_model_name(path, best_scenario)
-        if allowed_scenarios and scenario not in allowed_scenarios:
-            continue
         label = f"{scenario} (.keras)"
         if path.name == "face_mask_custom_cnn_from_scratch_best.keras":
-            label = f"Final best CNN: {best_scenario}"
+            label = f"{scenario} (.keras, selected checkpoint)"
         if not has_tensorflow:
             label = f"{label} - TensorFlow belum tersedia"
         options.append(
@@ -54,8 +51,6 @@ def list_model_options(metrics: dict) -> list[dict]:
 
     for path in sorted(MODELS_DIR.glob("*.joblib")):
         scenario = scenario_from_model_name(path, best_scenario)
-        if allowed_scenarios and scenario not in allowed_scenarios:
-            continue
         label = f"{scenario} (.joblib)"
         if not has_classical_runtime:
             label = f"{label} - scikit-learn belum tersedia"
