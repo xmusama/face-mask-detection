@@ -33,10 +33,10 @@ def list_model_options(metrics: dict) -> list[dict]:
     options = []
 
     for path in sorted(MODELS_DIR.glob("*.keras")):
+        if path.name == "face_mask_custom_cnn_from_scratch_best.keras":
+            continue
         scenario = scenario_from_model_name(path, best_scenario)
         label = f"{scenario} (.keras)"
-        if path.name == "face_mask_custom_cnn_from_scratch_best.keras":
-            label = f"{path.stem} (.keras)"
         if not has_tensorflow:
             label = f"{label} - TensorFlow belum tersedia"
         options.append(

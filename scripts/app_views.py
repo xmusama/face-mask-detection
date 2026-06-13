@@ -174,11 +174,12 @@ def render_predict(metrics: dict, model_options: list[dict]) -> None:
         return
 
     labels = [option["label"] for option in model_options]
+    best_scenario = metrics.get("best_cnn_scenario", "")
     default_idx = next(
         (
             idx
             for idx, option in enumerate(model_options)
-            if option["available"] and option["path"].name == "face_mask_custom_cnn_from_scratch_best.keras"
+            if option["available"] and option["scenario"] == best_scenario and option["kind"] == "cnn"
         ),
         next((idx for idx, option in enumerate(model_options) if option["available"]), 0),
     )
@@ -273,6 +274,8 @@ def render_artifacts(metrics: dict) -> None:
             continue
         for path in sorted(folder.glob("*")):
             if path.is_file() and path.name != ".gitkeep":
+                if path.name == "face_mask_custom_cnn_from_scratch_best.keras":
+                    continue
                 scenario = artifact_scenario_name(path.name)
                 if scenario and allowed_scenarios and scenario not in allowed_scenarios:
                     continue
