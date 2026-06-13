@@ -36,7 +36,7 @@ def list_model_options(metrics: dict) -> list[dict]:
         scenario = scenario_from_model_name(path, best_scenario)
         label = f"{scenario} (.keras)"
         if path.name == "face_mask_custom_cnn_from_scratch_best.keras":
-            label = f"{scenario} (.keras, selected checkpoint)"
+            label = f"{path.stem} (.keras)"
         if not has_tensorflow:
             label = f"{label} - TensorFlow belum tersedia"
         options.append(

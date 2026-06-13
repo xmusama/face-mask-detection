@@ -2,8 +2,6 @@
 research_report.*
 
 # Large generated model/checkpoint files.
-results/models/*.keras
-!results/models/face_mask_custom_cnn_from_scratch_best.keras
 results/models/*.h5
 results/models/*.tflite
 
